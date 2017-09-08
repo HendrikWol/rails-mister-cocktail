@@ -1,23 +1,34 @@
+<div class="text-center">
+
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>
+  <h2>
   <%= @cocktail.name %>
+  </h2>
+  </strong>
 </p>
 
  <p>
     <strong>Ingredients:</strong>
     <% @doses.each do |dose| %>
-    <ul>
-    <li><%= dose.ingredient.name %>
-       (<%= dose.description %>)
 
+    <p><%= dose.ingredient.name %>
+       (<%= dose.description %>)
+      <div class="new-button">
       <%= link_to 'Delete dose', dose_path(dose.id), method: :delete %>
-    </li>
-    </ul>
+      </div>
+    </p>
+
     <% end %>
 </p>
 
-<%= link_to 'Add ingredients', new_cocktail_dose_path(@cocktail) %>
-<%= link_to 'Edit', edit_cocktail_path(@cocktail) %> |
-<%= link_to 'Back', cocktails_path %>
+<br>
+<div class="new-button-back">
+<%= link_to 'Add ingredients', new_cocktail_dose_path(@cocktail) %>  |  <%= link_to 'Edit', edit_cocktail_path(@cocktail) %>  |  <%= link_to 'Back', cocktails_path %></div>
+
+
+
+
+</div>
