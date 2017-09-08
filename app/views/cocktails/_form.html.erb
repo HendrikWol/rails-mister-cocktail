@@ -9,8 +9,11 @@
     <%= f.input :photo_cache, as: :hidden %>
   </div>
 
-  <div class="form-actions">
-    <div class="btn-medium"> <%= f.button :submit %></div>
-  </div>
+
+
+   <%= button_tag(type: 'submit', class: "btn-medium-edit") do %>
+    <i class="icon-ok icon-white"></i> Save
+  <% end %>
+
 <% end %>
 </div>

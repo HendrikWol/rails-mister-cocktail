@@ -2,6 +2,10 @@
   height: 175px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-image: url('http://cdn.liquor.com/wp-content/uploads/2010/09/20141732/classic-mojito-720FB.jpg');
+
+
+
+
   background-size: cover !important;
   background-position: center;
   color: white;
@@ -57,4 +61,18 @@
   height: 10px;
   width: 50px;
   background-color: white;
+}
+
+.hendrick {
+  color: white;
+  text-transform: none;
+  a:hover {
+    color: white;
+    text-transform: none;
+  }
+}
+
+.background-card {
+  background-image: url('background.jpg') no-repeat center center fixed;
+  background-size: cover;
 }

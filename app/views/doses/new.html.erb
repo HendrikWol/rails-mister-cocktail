@@ -4,7 +4,23 @@
 
   <div class="new text-center">
 
-<%= render 'form', dose: @dose %>
+<div class="text-center">
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :description %>
+    <%= f.association :ingredient %>
+  </div>
+
+  <div class="form-actions">
+    <div class="btn-medium"><%= f.button :submit %></div>
+  </div>
+<% end %>
+
+</div>
+
 
 </div>
 

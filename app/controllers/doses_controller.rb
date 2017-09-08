@@ -28,16 +28,24 @@ class DosesController < ApplicationController
   # POST /doses.json
   def create
     @dose = Dose.new(dose_params)
-
-    respond_to do |format|
-      if @dose.save
-        format.html { redirect_to cocktail_path(dose_params[:cocktail_id]), notice: 'Dose was successfully created.' }
-        format.json { render :show, status: :created, location: @dose }
-      else
-        format.html { render :new }
-        format.json { render json: @dose.errors, status: :unprocessable_entity }
-      end
+    @cocktail = Cocktail.find(params[:cocktail_id])
+    @dose.cocktail = @cocktail
+    if @dose.save
+      redirect_to cocktail_path(@cocktail)
+    else
+      @ingredients = Ingredient.all
+      render 'cocktails/show'
     end
+
+    # respond_to do |format|
+    #   if @dose.save
+    #     format.html { redirect_to cocktail_path(dose_params[:cocktail_id]), notice: 'Dose was successfully created.' }
+    #     format.json { render :show, status: :created, location: @dose }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @dose.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /doses/1
@@ -72,6 +80,6 @@ class DosesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dose_params
-      params.require(:dose).permit(:description, :cocktail_id, :ingredient_id)
+      params.require(:dose).permit(:description, :ingredient_id)
     end
 end
